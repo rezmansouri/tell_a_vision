@@ -8,7 +8,6 @@ setup(
     author='Reza Mansouri',
     author_email='std_reza_mansouri@khu.ac.ir',
     license='MIT',
-    packages=['tell_a_vision'],
     install_requires=['numpy >= 1.21.0',
                       'gTTs >= 2.2.4'
                       ],
