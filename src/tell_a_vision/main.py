@@ -3,7 +3,7 @@ import numpy as np
 
 def locate(boxes, scene_width, scene_height, v_point=.66, h_point=.66, horizontal_only=True):
     """
-    :param boxes: numpy array of  shape (n_boxes, 4) with each element containing [ymin, xmin, ymax, xmax] coordinates of bounding boxes
+    :param boxes: numpy array of shape (n_boxes, 4) with each element containing [ymin, xmin, ymax, xmax] coordinates of bounding boxes
     :param scene_width: the pixel-width of the scene to be analyzed
     :param scene_height: the pixel-height of the scene to be analyzed
     :param v_point: the portion of a box's width, as a threshold to determine its vertical location

@@ -20,7 +20,7 @@ class Narrator:
                 for distance in rank_labels:
                     for v_direction in v_direction_labels:
                         for h_direction in h_direction_labels:
-                            text = f'one {c} {v_direction} {h_direction} {distance}'
+                            text = f'one {c} {h_direction} {v_direction} {distance}'
                             tts = gTTS(text, lang='en')
                             tts.save(f'{audio_directory}1-{c}-{h_direction}-{v_direction}-{distance}.mp3')
             for i in range(2, max_obj_per_segment + 1):
@@ -34,7 +34,7 @@ class Narrator:
                     for distance in rank_labels:
                         for v_direction in v_direction_labels:
                             for h_direction in h_direction_labels:
-                                text = f'{i} {c}s  {v_direction} {h_direction} {distance}'
+                                text = f'{i} {c}s  {h_direction} {v_direction} {distance}'
                                 tts = gTTS(text, lang='en')
                                 tts.save(f'{audio_directory}{i}-{c}-{h_direction}-{v_direction}-{distance}.mp3')
 
