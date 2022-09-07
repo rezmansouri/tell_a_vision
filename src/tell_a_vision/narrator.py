@@ -39,17 +39,17 @@ class Narrator:
                                 tts.save(f'{audio_directory}{i}-{c}-{v_direction}-{h_direction}-{distance}.mp3')
 
     @staticmethod
-    def get_narration(classes, class_labels, ranks, locations, lr_only=True):
+    def get_narration(classes, class_labels, ranks, locations, rank_to_distance_labels=('far', 'near', 'near', 'close'),
+                      h_location_to_lr_labels=('left', 'middle', 'right'),
+                      v_location_to_ab_labels=('above', 'midst', 'bottom'),
+                      horizontal_only=True):
         map_ = {}
-        rank_to_distance = ['close', 'near', 'near', 'far']
-        h_location_to_lr = ['left', 'middle', 'right']
-        v_location_to_ab = ['above', 'midst', 'bottom']
         for i, c in enumerate(classes):
             label = class_labels[c]
-            key = f'-{label}-{h_location_to_lr[locations[i][0]]}'
-            if not lr_only:
-                key += f'-{v_location_to_ab[locations[i][1]]}'
-            key += f'-{rank_to_distance[ranks[i]]}'
+            key = f'-{label}-{h_location_to_lr_labels[locations[i][0]]}'
+            if not horizontal_only:
+                key += f'-{v_location_to_ab_labels[locations[i][1]]}'
+            key += f'-{rank_to_distance_labels[ranks[i]]}'
             if key in map_:
                 map_[key] += 1
             else:
