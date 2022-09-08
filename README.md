@@ -4,6 +4,8 @@
   <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/tv.png" width="700em"/>
 </p>
 
+**tell a vision (`tv`)**  is a Python package that describes the scenes for object detection tasks in computer vision.
+
 ## Introduction
 The task of object detection consists of three subtasks: object recognition, localization, and classification. Usually, object detection projects present their output in a visual format that shows the objects found with bounding boxes in different colors representing their classes. Something like this:
 
@@ -235,3 +237,14 @@ narration = narrator.get_narration(classes=classes, class_labels=CLASS_LABELS, r
 Specific for you own application, you may choose to play these audio files from `./audio` consecutively, low-speed, high-speed, merge them together, etc.. Not **`tv`**'s business! But lets hear a demo:
 ```python
 import IPython
+for nar in narration:
+  IPython.display.display(IPython.display.Audio(f'audio/{nar}.mp3'))
+```
+https://user-images.githubusercontent.com/46050829/189135844-c3fc75ba-02f3-41e5-9feb-1fa15130d400.mp4
+
+Take a look at the picture again:
+
+<p align="center">
+  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/street-3.jpg" width="700em"/>
+</p>
+
