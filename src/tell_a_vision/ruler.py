@@ -27,14 +27,14 @@ class Ruler:
         for c in self._quantiles:
             self._quantiles[c] = np.quantile(self._quantiles[c], [.25, .5, .75])
 
-    def get_ranks(self, nms_boxes, nms_classes):
+    def get_ranks(self, boxes, classes):
         """
-        :param nms_boxes: array-like object of shape (n_boxes, 4) with each element containing [ymin, xmin, ymax, xmax] coordinates of bounding boxes
-        :param nms_classes: array-like object of shape (n_boxes, ) with each element corresponding to the index of the object's class in class labels
+        :param boxes: array-like object of shape (n_boxes, 4) with each element containing [ymin, xmin, ymax, xmax] coordinates of bounding boxes
+        :param classes: array-like object of shape (n_boxes, ) with each element corresponding to the index of the object's class in class labels
         :return: an array of objects' ranks where a rank corresponds to the quantile interval of the object's size among the objects fitted in initialization -> 0, 1, 2, or 3
         """
         ranks = []
-        for box, class_index in zip(nms_boxes, nms_classes):
+        for box, class_index in zip(boxes, classes):
             ymin, xmin, ymax, xmax = box
             class_ = self._classes[class_index]
             size = (ymax - ymin) * (xmax - xmin)
