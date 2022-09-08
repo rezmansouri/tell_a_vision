@@ -1,7 +1,7 @@
 # tell a vision 📺
 
 <p align="center">
-  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/tv.png" width="400em"/>
+  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/tv.png" width="700em"/>
 </p>
 
 ## Introduction
