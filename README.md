@@ -31,7 +31,6 @@ Here is a mere representation of what **`tv`** does:
 </p>
 
 ## Documentation
-Try **`tv`** using [this]() demo notebook on your local machine or via colab [here]().
 ### Requirements
 1. Python interpreter version 3.7 or later
 2. Package prerequisites:
