@@ -424,7 +424,7 @@ A static method that receives the output of `tv.locate()`, and `tv.Ruler.get_ran
 - `rank_to_distance_labels`: tuple of length 4 describing objects' distance/size according to their ranks (quartile intervals). Defaults to `('far', 'near', 'near', 'close')`.
 - `h_location_to_lr_labels`: tuple of length 3 describing objects' horizontal location. Defaults to `('left', 'middle', 'right')`.
 - `v_location_to_ab_labels`: tuple of length 3 describing objects' vertical location. Defaults to `('above', 'midst', 'bottom')`.
-- `horizontal_only`: whether to create narrations regarding objects' vertical location. Must be set to `True` if a `narrator`'s audio files were created with it set true in `tv.Narrator()`. Defaults to `False`.
+- `horizontal_only`: whether to create narrations regarding objects' vertical location. Must be set to `True` if a `narrator`'s audio files were created with it set true in `tv.Narrator()`. Defaults to `True`.
 - `returns` a list of narrations that correspond to the downloaded audio files for a `narrator` which can also be used in a textual format.
 
 ## Contributions
