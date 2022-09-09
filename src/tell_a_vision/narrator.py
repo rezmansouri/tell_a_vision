@@ -1,10 +1,13 @@
 from gtts import gTTS
+import os
 
 
 class Narrator:
     def __init__(self, class_labels: list, audio_directory: str, max_obj_per_segment=5,
                  rank_labels=('close', 'near', 'far'), h_direction_labels=('left', 'middle', 'right'),
                  v_direction_labels=('above', 'midst', 'bottom'), horizontal_only=True):
+        if not os.path.isdir(audio_directory):
+            os.mkdir(audio_directory)
         self._audio_directory = audio_directory
         self._horizontal_only = horizontal_only
         if not audio_directory.endswith(('/', '\\')):

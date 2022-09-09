@@ -2,12 +2,12 @@ import numpy as np
 
 
 class Ruler:
-    def __init__(self, images: list, classes: list, coords_key='box', class_key='class', xmin_key='x1', ymin_key='y1',
+    def __init__(self, images: list, class_labels: list, coords_key='box', class_key='class', xmin_key='x1', ymin_key='y1',
                  xmax_key='x2', ymax_key='y2'):
         """
         fit the camera on a collection of bounding box annotations for each class to get quantiles of the area of objects
         :param images: list of dicts where each one corresponds to bounding box annotations of an image i.e. [{'box':{'x1': 0, 'y1': 10, 'x2': 10, 'y2':20}, 'class': 'car'}]
-        :param classes: list of class labels
+        :param class_labels: list of class labels
         :param coords_key: alternative key for 'box' in [{'box':{'x1': 0, 'y1': 10, 'x2': 10, 'y2':20}, 'class': 'car'}]
         :param class_key: alternative key for 'class' in [{'box':{'x1': 0, 'y1': 10, 'x2': 10, 'y2':20}, 'class': 'car'}]
         :param xmin_key: alternative key for 'x1' in [{'box':{'x1': 0, 'y1': 10, 'x2': 10, 'y2':20}, 'class': 'car'}]
@@ -15,8 +15,8 @@ class Ruler:
         :param xmax_key: alternative key for 'x2' in [{'box':{'x1': 0, 'y1': 10, 'x2': 10, 'y2':20}, 'class': 'car'}]
         :param ymax_key: alternative key for 'y2' in [{'box':{'x1': 0, 'y1': 10, 'x2': 10, 'y2':20}, 'class': 'car'}]
         """
-        self._quantiles = {c: [] for c in classes}
-        self._classes = classes
+        self._quantiles = {c: [] for c in class_labels}
+        self._class_labels = class_labels
         for image in images:
             for obj in image:
                 coords = obj[coords_key]
@@ -36,7 +36,7 @@ class Ruler:
         ranks = []
         for box, class_index in zip(boxes, classes):
             ymin, xmin, ymax, xmax = box
-            class_ = self._classes[class_index]
+            class_ = self._class_labels[class_index]
             size = (ymax - ymin) * (xmax - xmin)
             ranks.append(np.searchsorted(self._quantiles[class_], size))
         return ranks

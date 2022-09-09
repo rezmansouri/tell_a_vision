@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='tell_a_vision',
-    version='0.1.4',
+    version='0.1.5',
     description='TV (tell_a_vision) is a tool that provides explanatory analysis for object detection tasks in computer vision.',
     url='https://github.com/rezmansouri/tell_a_vision',
     author='Reza Mansouri',

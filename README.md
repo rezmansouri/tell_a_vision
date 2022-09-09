@@ -15,7 +15,7 @@ The task of object detection consists of three subtasks: object recognition, loc
 
 But what if we could make the computer tell us what it is seeing? For example: "There is a dog in the bottom left, a bicycle in the middle, and a truck on the top right." What if the computer can *tell a vision*? Pretty cool right?
 
-**tell a vision (`tv`)** is Python package that can provide explanatory analysis on the output of object detection algoirthms. It takes bounding boxes, and the classes of the objects found and answers questions such as:
+**tell a vision (`tv`)** is Python package that can provide explanatory analysis on the output of object detection algorithms. It takes bounding boxes, and the classes of the objects found and answers questions such as:
 
 - How many objects and of what kind are in a specific region of the scene?
 - How far are they? Are they close? 
@@ -24,10 +24,10 @@ But what if we could make the computer tell us what it is seeing? For example: "
 
 And in the end, using TTS (Text To Speech) it can describe the scene.
 
-Here is a mere representaion of what **`tv`** does:
+Here is a mere representation of what **`tv`** does:
 
 <p align="center">
-  <img src="misc/tv.gif" width="80%"/>
+  <img src="misc/tv.gif" width="100%"/>
 </p>
 
 ## Documentation
@@ -104,7 +104,7 @@ classes = [1, 1, 1, 2, 3, 1, 1, 2, 0, 0, 0, 4, 4]
 ```
 This scene (picture) is 1280px wide and 720px high. The objects are mentioned from left to right (if you're following the coordinates) and the class labels are:
 ```python
-CLASS_LABELS = ['pedastrian', 'car', 'truck', 'traffic light', 'traffic sign']
+CLASS_LABELS = ['pedestrian', 'car', 'truck', 'traffic light', 'traffic sign']
 ```
 
 <p align="center">
@@ -167,7 +167,7 @@ images = [
                     'x2': 100.86,
                     'y2': 500.42
                    },
-            'class': 'pedastrian'
+            'class': 'pedestrian'
         },
     ],
     [
@@ -215,7 +215,7 @@ images = [
 Each element in `images` represents the annotation of an image in your dataset and contains bounding box coordinates along with classes of the objects in the image.
 
 ```python
-ruler = tv.Ruler(images=images, classes=CLASS_LABELS) # Fitting the ruler on your annotations
+ruler = tv.Ruler(images=images, classe_labels=CLASS_LABELS) # Fitting the ruler on your annotations
 ```
 
 After, although a private variable and inaccessible, ruler's quartiles would be something like this:
@@ -223,7 +223,7 @@ After, although a private variable and inaccessible, ruler's quartiles would be 
 {
     'truck':         [200.12,  405.85,  793.11],
     'car':           [536.11,  863.94,  1076.2],
-    'pedastrian':    [12.133,  60.353,  100.34],
+    'pedestrian':    [12.133,  60.353,  100.34],
     'traffic light': [5.65,    18.46,    52.11],
     'traffic sign':  [4.42,    15.96,    89.91]
 }
@@ -238,12 +238,12 @@ Each element of `ranks` corresponds to the found object's specific class quartil
 ```
 `0` can be inferred as small / far, `1` as relatively small / far, `2` as roughly big / near, `3` as big / near.
 
-*As can be seen, moving from left to right, the cars are close, near, near, the truck is near, the car in the middle is near, the traffic light is far, the car parked on the right is near, the truck on the right and the pedastrian beside it are close, the two pedastrians on the right are near, and the two traffic signs are near.*
+*As can be seen, moving from left to right, the cars are close, near, near, the truck is near, the car in the middle is near, the traffic light is far, the car parked on the right is near, the truck on the right and the pedestrian beside it are close, the two pedestrians on the right are near, and the two traffic signs are near.*
 
 #### Task three: Scene narration with `tv.Narrator`
 Now our goal is to group together our findings to get a concise description of the scene, and maybe let **`tv`** *finally tell the vision!*
 ```python
-narrator = tv.Narrator(classes_labels=CLASS_LABELS, audio_directory='./audio', horizontal_only=False)
+narrator = tv.Narrator(class_labels=CLASS_LABELS, audio_directory='./audio', horizontal_only=False)
 ```
 This will create a narrator object and download all possible narrations for your classes as `.mp3` files in `./audio`. The directory will look something like this:
 - 1-car-left-bottom-near.mp3
@@ -251,7 +251,7 @@ This will create a narrator object and download all possible narrations for your
 - ...
 - 4-traffic light-middle-above-far.mp3
 - ...
-- 5-pedastrian-middle-above-close.mp3
+- 5-pedestrian-middle-above-close.mp3
 
 Finally, using `narrator.get_narration()` static method we can get the summerized description of the scene in the format of the name of the audio files to be played:
 ```python
@@ -267,8 +267,8 @@ narration = narrator.get_narration(classes=classes, class_labels=CLASS_LABELS, r
     '1-traffic light-right-above-far',
     '1-car-right-above-near',
     '1-truck-right-above-close',
-    '1-pedastrian-right-above-close',
-    '2-pedastrian-right-above-near',
+    '1-pedestrian-right-above-close',
+    '2-pedestrian-right-above-near',
     '2-traffic sign-right-above-near'
  ]
 ```
@@ -282,8 +282,8 @@ If since the beginning of this procedure, `horizontal_only` was set to `True` (d
     '1-traffic light-right-far',
     '1-car-right-near',
     '1-truck-right-close',
-    '1-pedastrian-right-close',
-    '2-pedastrian-right-near',
+    '1-pedestrian-right-close',
+    '2-pedestrian-right-near',
     '2-traffic sign-right-near'
  ]
 ```
@@ -303,13 +303,117 @@ Lets take a look at the picture again:
 </p>
 
 ### Reference
-#### `locate(boxes, scene_width, scene_height, v_point=.66, h_point=.66, horizontal_only=True)`
-#### Parameters
+#### `tv.locate(boxes, scene_width, scene_height, v_point=.66, h_point=.66, horizontal_only=True)`
+#### Arguments
 - `boxes`: numpy array of shape (n, 4) where n is the number of the boxes found and each element contains bounding box of the found object in the following format: `[ymin, xmin, ymax, xmax]`.
 - `scene_width`: integer representing the width of the scene in pixels.
 - `scene_height`: integer representing the height of the scene in pixels.
 - `v_point`<sup>1</sup>: portion of an objects height to be considered as a threshold when it is placed vertically near-midst to determine its vertical placement. Defaults to `0.66`.
 - `h_point`<sup>1</sup>: portion of an objects width to be considered as a threshold when it is placed horizontally near-middle to determine its horizontal placement. Defaults to `0.66`.
 - `horizontal_only`: Whether to locate the objects only horizontally. Defaults to `True`.
+- `returns` array of shape (n, 2) containing the locations of the boxes: `[h_location, v_location]`. `0`, `1`, and `2` mean left/above, middle/midst, right/bottom for `h_location` and `v_location` respectively. if `horizontal_only=True`, `v_location` will be `nan` for all entries.
 
 1- `v_point` and `h_point` are described more in detail here:
+
+<p align="center">
+  <img src="misc/vpoint-hpoint.png" width="80%"/>
+</p>
+
+Using these arguments, you can specify the portion of an object's width/height that if laid on one side of the h_margin/v_margin here, the object's placement be considered as that side's direction.
+
+In other words:
+
+- if $\alpha$ > `h_point` * object's width, it is considered on the right.
+- if $\beta$ > `h_point` * object's width, it is considered on the left.
+- otherwise, it is considered in the middle.
+
+Vertically,
+- if $\rho$ > `v_point` * object's height, it is considered above.
+- if $\sigma$ > `v_point` * object's height, it is considered in the bottom.
+- otherwise, it is considered in the midst.
+
+#### `tv.Ruler(images, class_labels, coords_key='box', class_key='class', xmin_key='x1', ymin_key='y1', xmax_key='x2', ymax_key='y2')`
+A `Ruler` object learns the range of each object class size from a dataset and can provide size/distance estimation for new objects found by the object detection algorithm.
+#### Arguments
+- `images`: list of image annotations, where each image annotation contains object annotations (bounding box coordinates and class). i.e. this is an acceptable input:
+```python
+[
+    [
+        {
+            'box': {
+                    'x1': 400.12,
+                    'y1': 700.50,
+                    'x2': 1156.97,
+                    'y2': 900.20
+                   },
+            'class': 'car'
+        },
+        {
+            'box': {
+                    'x1': 867.12,
+                    'y1': 716.50,
+                    'x2': 1250.9764,
+                    'y2': 987.42
+                   },
+            'class': 'bike'
+        },
+    ],
+    [
+        {
+            'box': {
+                    'x1': 90.107,
+                    'y1': 467.11,
+                    'x2': 100.86,
+                    'y2': 500.42
+                   },
+            'class': 'person'
+        },
+        {
+            'box': {
+                    'x1': 867.12,
+                    'y1': 716.50,
+                    'x2': 1250.9764,
+                    'y2': 987.42
+                   },
+            'class': 'truck'
+        },
+        ...
+    ],
+    ...
+]
+```
+- `class_labels`: list of class labels of objects in your dataset. For example: `['car', 'bike', 'person', 'truck']`.
+- `coords_key`: alternative key for `'box'` in image annotations.
+- `class_key`: alternative key for `'class'` in image annotations.
+- `xmin_key`: alternative key for `'x1'` in image annotations.
+- `ymin_key`: alternative key for `'y1'` in image annotations.
+- `xmax_key`: alternative key for `'x2'` in image annotations.
+- `ymax_key`: alternative key for `'y2'` in image annotations.
+- `returns` a `Ruler` object that can be later used to determine detected objects' size/distance.
+
+#### `tv.Ruler.get_rank(boxes, classes)`
+Returns the quartile interval index of `boxes` according to `classes` and the range learned specific to each class label while the `ruler` was initialized. 
+#### Arguments
+- `boxes`: array of shape (n, 4) with each element containing `[ymin, xmin, ymax, xmax]` coordinates of bounding boxes.
+- `classes`: array of shape (n, ) with each element corresponding to the index of the object's class in `ruler`'s class labels.
+- `returns` array of shape (n, ) with each element being either 0, 1, 2, or 3, interpretable as small/far, relatively small/far, relatively close/big, close/big respectively for each box.
+
+<p align="center">
+  <img src="misc/quartiles.png" width="80%"/>
+</p>
+
+#### `tv.Narrator(class_labels, audio_directory, max_obj_per_segment=5, rank_labels=('close', 'near', 'far'), h_direction_labels=('left', 'middle', 'right'), v_direction_labels=('above', 'midst', 'bottom'), horizontal_only=True)`
+By creating a `Narrator`, all possible audio narrations for `class_labels` will be downloaded to `audio_directory` and you'll later be able to use the `Narrator` to summerize a scene's findings by **`tv`** into narrations.
+#### Arguments
+- `class_labels`: list of class labels of objects in your dataset. For example: `['car', 'bike', 'person', 'truck']`.
+- `audio_directory`: string path of a directory to save downloaded `.mp3` narrations to. If it doesn't exist, **`tv`** will attempt to create it.
+- `max_obj_per_segment`: maximum number of objects that are summarized together. For example, the number of cars on the right side of the scene that are close. Defaults to `5`.
+- `rank_labels`: labels associated with the ranks of the objects. Tuple of length more than zero and less than five to cover the possible quartiles in ranks. Defaults to `('close', 'near', 'far')`.
+- `h_direction_labels`: labels associated with the horizontal location of the objects. Tuple of length three. Defaults to `('left', 'middle', 'right')`.
+- `v_direction_labels`: labels associated with the vertical location of the objects. Tuple of length three. Defaults to `('above', 'midst', 'bottom')`.
+- `horizontal_only`: whether to download annotations regarding only the horizontal location of the objects or not. Defaults to `True`.
+- `returns` a `Narrator` object that can be later used to summarize the scene in narrations.
+
+#### `tv.Narrator.get_narration(classes, class_labels, ranks, locations, rank_to_distance_labels=('far', 'near', 'near', 'close'), h_location_to_lr_labels=('left', 'middle', 'right'), v_location_to_ab_labels=('above', 'midst', 'bottom'), horizontal_only=True)`
+A static method that receives the output of **`tv`**`.locate()`, and **`tv`**`.Ruler.get_ranks()` and returns the summary of the scene in the form of narrations.
+
