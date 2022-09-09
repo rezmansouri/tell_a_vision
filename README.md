@@ -1,7 +1,7 @@
 # tell a vision 📺
 
 <p align="center">
-  <img src="misc/tv.png" width="100%"/>
+  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/tv.png" width="100%"/>
 </p>
 
 **tell a vision (`tv`)**  is a Python package that describes the scenes for object detection tasks in computer vision.
@@ -10,7 +10,7 @@
 The task of object detection consists of three subtasks: object recognition, localization, and classification. Usually, object detection projects present their output in a visual format that shows the objects found with bounding boxes in different colors representing their classes. Something like this:
 
 <p align="center">
-  <img src="misc/dog-bike-truck.png" width="400em"/>
+  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/dog-bike-truck.png" width="400em"/>
 </p>
 
 But what if we could make the computer tell us what it is seeing? For example: "There is a dog in the bottom left, a bicycle in the middle, and a truck on the top right." What if the computer can *tell a vision*? Pretty cool right?
@@ -27,7 +27,7 @@ And in the end, using TTS (Text To Speech) it can describe the scene.
 Here is a mere representation of what **`tv`** does:
 
 <p align="center">
-  <img src="misc/tv.gif" width="100%"/>
+  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/tv.gif" width="100%"/>
 </p>
 
 ## Documentation
@@ -81,7 +81,7 @@ Normally your object detection algorithm will output these results:
 For the rest of this documentation, let's consider the following output of an object detection algorithm, such as YOLO, as an example:
 
 <p align="center">
-  <img src="misc/car-pov-1.png" width="100%"/>
+  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/car-pov-1.png" width="100%"/>
 </p>
 
 The corresponding `boxes` and `classes` for this visualization, provided by the object detection algorithm, are:
@@ -108,7 +108,7 @@ CLASS_LABELS = ['pedestrian', 'car', 'truck', 'traffic light', 'traffic sign']
 ```
 
 <p align="center">
-  <img src="misc/car-pov-2.png" width="100%"/>
+  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/car-pov-2.png" width="100%"/>
 </p>
 
 #### Task one: Localization with `tv.locate()`
@@ -294,12 +294,12 @@ for nar in narration:
   IPython.display.display(IPython.display.Audio(f'audio/{nar}.mp3'))
 ```
 
-https://user-images.githubusercontent.com/46050829/189315741-c3f56862-3f8c-4f20-8c86-50d98b970edf.mp4
+https://user-images.githubusercontent.com/46050829/189340077-6022a955-d48d-4ba2-9f57-4fd00d3fa627.mp4
 
 Lets take a look at the picture again:
 
 <p align="center">
-  <img src="misc/car-pov-3.png" width="100%"/>
+  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/car-pov-3.png" width="100%"/>
 </p>
 
 ### Reference
@@ -316,7 +316,7 @@ Lets take a look at the picture again:
 1- `v_point` and `h_point` are described more in detail here:
 
 <p align="center">
-  <img src="misc/vpoint-hpoint.png" width="80%"/>
+  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/vpoint-hpoint.png" width="80%"/>
 </p>
 
 Using these arguments, you can specify the portion of an object's width/height that if laid on one side of the h_margin/v_margin here, the object's placement be considered as that side's direction.
@@ -399,7 +399,7 @@ Returns the quartile interval index of `boxes` according to `classes` and the ra
 - `returns` array of shape (n, ) with each element being either 0, 1, 2, or 3, interpretable as small/far, relatively small/far, relatively close/big, close/big respectively for each box.
 
 <p align="center">
-  <img src="misc/quartiles.png" width="80%"/>
+  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/quartiles.png" width="80%"/>
 </p>
 
 #### `tv.Narrator(class_labels, audio_directory, max_obj_per_segment=5, rank_labels=('close', 'near', 'far'), h_direction_labels=('left', 'middle', 'right'), v_direction_labels=('above', 'midst', 'bottom'), horizontal_only=True)`
