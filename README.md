@@ -27,7 +27,7 @@ And in the end, using TTS (Text To Speech) it can describe the scene.
 Here is a mere representation of what **`tv`** does:
 
 <p align="center">
-  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/tv.gif" width="100%"/>
+  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/tv.gif" width="80%"/>
 </p>
 
 ## Documentation
@@ -415,5 +415,17 @@ By creating a `Narrator`, all possible audio narrations for `class_labels` will 
 - `returns` a `Narrator` object that can be later used to summarize the scene in narrations.
 
 #### `tv.Narrator.get_narration(classes, class_labels, ranks, locations, rank_to_distance_labels=('far', 'near', 'near', 'close'), h_location_to_lr_labels=('left', 'middle', 'right'), v_location_to_ab_labels=('above', 'midst', 'bottom'), horizontal_only=True)`
-A static method that receives the output of **`tv`**`.locate()`, and **`tv`**`.Ruler.get_ranks()` and returns the summary of the scene in the form of narrations.
+A static method that receives the output of `tv.locate()`, and `tv.Ruler.get_ranks()` and returns the summary of the scene in the form of narrations.
 
+- `classes`: array of shape (n, ) with each element corresponding to the index of the object's class in `class_labels`.
+- `class_labels`: list of class labels of objects in your dataset. For example: `['car', 'bike', 'person', 'truck']`.
+- `ranks`: output of `tv.Ruler.get_rank()`. Array of shape (n, ) with each element being 0, 1, 2, or 3 representing an object's size/distance.
+- `locations`: output of `tv.locate()`. Array of shape (n, 2) containing the locations of the boxes: `[h_location, v_location]`.
+- `rank_to_distance_labels`: tuple of length 4 describing objects' distance/size according to their ranks (quartile intervals). Defaults to `('far', 'near', 'near', 'close')`.
+- `h_location_to_lr_labels`: tuple of length 3 describing objects' horizontal location. Defaults to `('left', 'middle', 'right')`.
+- `v_location_to_ab_labels`: tuple of length 3 describing objects' vertical location. Defaults to `('above', 'midst', 'bottom')`.
+- `horizontal_only`: whether to create narrations regarding objects' vertical location. Must be set to `True` if a `narrator`'s audio files were created with it set true in `tv.Narrator()`. Defaults to `False`.
+- `returns` a list of narrations that correspond to the downloaded audio files for a `narrator` which can also be used in a textual format.
+
+## Contributions
+The idea of developing **`tv`** originated when I was working on my B.Sc. project. There might be issues with it, but it can surely be imporved. Pull requests are welcome and you can reach my at my [email](mailto:std_reza_mansouri@khu.ac.ir) if you need to discuss something or become a collaborator.
