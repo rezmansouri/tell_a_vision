@@ -1,7 +1,7 @@
 # tell a vision 📺
 
 <p align="center">
-  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/tv.png" width="700em"/>
+  <img src="misc/tv.png" width="100%"/>
 </p>
 
 **tell a vision (`tv`)**  is a Python package that describes the scenes for object detection tasks in computer vision.
@@ -10,7 +10,7 @@
 The task of object detection consists of three subtasks: object recognition, localization, and classification. Usually, object detection projects present their output in a visual format that shows the objects found with bounding boxes in different colors representing their classes. Something like this:
 
 <p align="center">
-  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/dog-bike-truck.png" width="400em"/>
+  <img src="misc/dog-bike-truck.png" width="400em"/>
 </p>
 
 But what if we could make the computer tell us what it is seeing? For example: "There is a dog in the bottom left, a bicycle in the middle, and a truck on the top right." What if the computer can *tell a vision*? Pretty cool right?
@@ -27,7 +27,7 @@ And in the end, using TTS (Text To Speech) it can describe the scene.
 Here is a mere representaion of what **`tv`** does:
 
 <p align="center">
-  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/tv.gif" width="700em"/>
+  <img src="misc/tv.gif" width="80%"/>
 </p>
 
 ## Documentation
@@ -81,26 +81,35 @@ Normally your object detection algorithm will output these results:
 For the rest of this documentation, let's consider the following output of an object detection algorithm, such as YOLO, as an example:
 
 <p align="center">
-  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/street-2.jpg" width="700em"/>
+  <img src="misc/car-pov-1.png" width="100%"/>
 </p>
 
 The corresponding `boxes` and `classes` for this visualization, provided by the object detection algorithm, are:
 ```python
-boxes = [[414,    0,  560,  163],
-         [370,  167,  559,  242],
-         [390,  175,  584,  603],
-         [155,  316,  208,  403],
-         [337,  337,  387,  413],
-         [420,  293,  712, 1051],
-         [375,  912,  414,  963],
-         [400, 1065,  603, 1140]]
+boxes = [[275,    4,  546,  400],
+         [290,  350,  371,  431]
+         [294,  425,  395,  540],
+         [268,  521,  357,  597],
+         [288,  610,  390,  717],
+         [250,  638,  272,  660]
+         [285,  733,  356,  787],
+         [145,  775,  427,  987],
+         [252,  810,  422,  867],
+         [266,  971,  370, 1013],
+         [270, 1018,  355, 1056],
+         [104, 1133,  155, 1186],
+         [163, 1141,  211, 1184]]
 
-classes = [1, 0, 1, 2, 2, 1, 2, 0]
+classes = [1, 1, 1, 2, 3, 1, 1, 2, 0, 0, 0, 4, 4]
 ```
 This scene (picture) is 1280px wide and 720px high. The objects are mentioned from left to right (if you're following the coordinates) and the class labels are:
 ```python
-CLASS_LABELS = ['person', 'car', 'advertisement']
+CLASS_LABELS = ['pedastrian', 'car', 'truck', 'traffic light', 'traffic sign']
 ```
+
+<p align="center">
+  <img src="misc/car-pov-2.png" width="100%"/>
+</p>
 
 #### Task one: Localization with `tv.locate()`
 First, let's see if the objects we've found are placed left, middle, right (or optionally, above, midst, bottom) of the scene.
@@ -115,13 +124,15 @@ locations = tv.locate(boxes=boxes, scene_width=1280, scene_height=720, horizonta
 The `locations` result for our example would be:
 ```python
 [[0, 2],
- [0, 2],
- [0, 2],
  [0, 0],
- [0, 1],
- [1, 2],
- [2, 2],
- [2, 2]]
+ [0, 0],
+ [0, 0],
+ [1, 0],
+ [2, 0],
+ [2, 0],
+ [2, 1],
+ [2, 0],
+ [2, 0]]
 ```
 
 #### Task two: Distance estimation with `tv.Ruler`
@@ -147,7 +158,7 @@ images = [
                     'x2': 1250.9764,
                     'y2': 987.42
                    },
-            'class': 'car'
+            'class': 'truck'
         },
         {
             'box': {
@@ -156,7 +167,7 @@ images = [
                     'x2': 100.86,
                     'y2': 500.42
                    },
-            'class': 'advertisement'
+            'class': 'pedastrian'
         },
     ],
     [
@@ -167,7 +178,7 @@ images = [
                     'x2': 688.556,
                     'y2': 210.87
                    },
-            'class': 'person'
+            'class': 'truck'
         },
         {
             'box': {
@@ -177,6 +188,24 @@ images = [
                     'y2': 987.42
                    },
             'class': 'car'
+        },
+        {
+            'box': {
+                    'x1': 80.107,
+                    'y1': 367.11,
+                    'x2': 90.83,
+                    'y2': 450.4
+                   },
+            'class': 'traffic light'
+        },
+        {
+            'box': {
+                    'x1': 90.7,
+                    'y1': 467.11,
+                    'x2': 95.86,
+                    'y2': 510.98
+                   },
+            'class': 'traffic sign'
         },
     ],
     ...
@@ -192,9 +221,11 @@ ruler = tv.Ruler(images=images, classes=CLASS_LABELS) # Fitting the ruler on you
 After, although a private variable and inaccessible, ruler's quartiles would be something like this:
 ```python
 {
-    'person':        [200.12,  405.85,  793.11],
+    'truck':         [200.12,  405.85,  793.11],
     'car':           [536.11,  863.94,  1076.2],
-    'advertisement': [12.133,  60.353,  100.34]
+    'pedastrian':    [12.133,  60.353,  100.34],
+    'traffic light': [5.65,    18.46,    52.11],
+    'traffic sign':  [4.42,    15.96,    89.91]
 }
 ```
 Now with `ruler.get_ranks()` we are able to find the quartile intervals of the objects we've found:
@@ -203,9 +234,11 @@ ranks = ruler.get_ranks(boxes=boxes, classes=classes)
 ```
 Each element of `ranks` corresponds to the found object's specific class quartile interval (0, 1, 2, or 3). `ranks` would be of shape `(n,)` and look something like this:
 ```python
-[2, 2, 1, 2, 1, 1, 3, 0, 1]
+[3, 2, 2, 2, 2, 0, 1, 3, 3, 1, 1, 3, 3]
 ```
 `0` can be inferred as small / far, `1` as relatively small / far, `2` as roughly big / near, `3` as big / near.
+
+*As can be seen, moving from left to right, the cars are close, near, near, the truck is near, the car in the middle is near, the traffic light is far, the car parked on the right is near, the truck on the right and the pedastrian beside it are close, the two pedastrians on the right are near, and the two traffic signs are near.*
 
 #### Task three: Scene narration with `tv.Narrator`
 Now our goal is to group together our findings to get a concise description of the scene, and maybe let **`tv`** *finally tell the vision!*
@@ -214,9 +247,11 @@ narrator = tv.Narrator(classes_labels=CLASS_LABELS, audio_directory='./audio', h
 ```
 This will create a narrator object and download all possible narrations for your classes as `.mp3` files in `./audio`. The directory will look something like this:
 - 1-car-left-bottom-near.mp3
-- 2-advertisement-right-midst-far.mp3
+- 2-car-left-midst-near.mp3
 - ...
-- 5-persons-middle-above-close.mp3
+- 4-traffic light-middle-above-far.mp3
+- ...
+- 5-pedastrian-middle-above-close.mp3
 
 Finally, using `narrator.get_narration()` static method we can get the summerized description of the scene in the format of the name of the audio files to be played:
 ```python
@@ -225,13 +260,31 @@ narration = narrator.get_narration(classes=classes, class_labels=CLASS_LABELS, r
 `narration` for our example would be something like this:
 ```python
 [
-    '2-car-left-bottom-near',
-    '1-person-left-bottom-far', 
-    '1-advertisement-left-above-close', 
-    '1-advertisement-left-midst-close',
-    '1-car-middle-bottom-close', 
-    '1-advertisement-right-bottom-far', 
-    '1-person-right-bottom-near'
+    '1-car-left-bottom-close',
+    '2-car-left-above-near',
+    '1-truck-left-above-near',
+    '1-car-middle-above-near',
+    '1-traffic light-right-above-far',
+    '1-car-right-above-near',
+    '1-truck-right-above-close',
+    '1-pedastrian-right-above-close',
+    '2-pedastrian-right-above-near',
+    '2-traffic sign-right-above-near'
+ ]
+```
+If since the beginning of this procedure, `horizontal_only` was set to `True` (default value) everywhere, the resulting `narration` would've been like this:
+```python
+[
+    '1-car-left-close',
+    '2-car-left-near',
+    '1-truck-left-near',
+    '1-car-middle-near',
+    '1-traffic light-right-far',
+    '1-car-right-near',
+    '1-truck-right-close',
+    '1-pedastrian-right-close',
+    '2-pedastrian-right-near',
+    '2-traffic sign-right-near'
  ]
 ```
 Specific for you own application, you may choose to play these audio files from `./audio` consecutively, low-speed, high-speed, merge them together, etc.. Not **`tv`**'s business! But lets hear a demo:
@@ -242,9 +295,20 @@ for nar in narration:
 ```
 https://user-images.githubusercontent.com/46050829/189135844-c3fc75ba-02f3-41e5-9feb-1fa15130d400.mp4
 
-Take a look at the picture again:
+Lets take a look at the picture again:
 
 <p align="center">
-  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/street-3.jpg" width="700em"/>
+  <img src="misc/car-pov-3.png" width="100%"/>
 </p>
 
+### Reference
+#### `locate(boxes, scene_width, scene_height, v_point=.66, h_point=.66, horizontal_only=True)`
+#### Parameters
+- `boxes`: numpy array of shape (n, 4) where n is the number of the boxes found and each element contains bounding box of the found object in the following format: `[ymin, xmin, ymax, xmax]`.
+- `scene_width`: integer representing the width of the scene in pixels.
+- `scene_height`: integer representing the height of the scene in pixels.
+- `v_point`<sup>1</sup>: portion of an objects height to be considered as a threshold when it is placed vertically near-midst to determine its vertical placement. Defaults to `0.66`.
+- `h_point`<sup>1</sup>: portion of an objects width to be considered as a threshold when it is placed horizontally near-middle to determine its horizontal placement. Defaults to `0.66`.
+- `horizontal_only`: Whether to locate the objects only horizontally. Defaults to `True`.
+
+1- `v_point` and `h_point` are described more in detail here:
