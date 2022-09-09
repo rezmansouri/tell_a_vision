@@ -253,7 +253,7 @@ This will create a narrator object and download all possible narrations for your
 - ...
 - 5-pedestrian-middle-above-close.mp3
 
-Finally, using `narrator.get_narration()` static method we can get the summerized description of the scene in the format of the name of the audio files to be played:
+Finally, using `narrator.get_narration()` static method we can get the summarized description of the scene in the format of the name of the audio files to be played:
 ```python
 narration = narrator.get_narration(classes=classes, class_labels=CLASS_LABELS, ranks=ranks, locations=locations)
 ```
@@ -403,7 +403,7 @@ Returns the quartile interval index of `boxes` according to `classes` and the ra
 </p>
 
 #### `tv.Narrator(class_labels, audio_directory, max_obj_per_segment=5, rank_labels=('close', 'near', 'far'), h_direction_labels=('left', 'middle', 'right'), v_direction_labels=('above', 'midst', 'bottom'), horizontal_only=True)`
-By creating a `Narrator`, all possible audio narrations for `class_labels` will be downloaded to `audio_directory` and you'll later be able to use the `Narrator` to summerize a scene's findings by **`tv`** into narrations.
+By creating a `Narrator`, all possible audio narrations for `class_labels` will be downloaded to `audio_directory` and you'll later be able to use the `Narrator` to summarize a scene's findings by **`tv`** into narrations.
 #### Arguments
 - `class_labels`: list of class labels of objects in your dataset. For example: `['car', 'bike', 'person', 'truck']`.
 - `audio_directory`: string path of a directory to save downloaded `.mp3` narrations to. If it doesn't exist, **`tv`** will attempt to create it.
@@ -428,4 +428,4 @@ A static method that receives the output of `tv.locate()`, and `tv.Ruler.get_ran
 - `returns` a list of narrations that correspond to the downloaded audio files for a `narrator` which can also be used in a textual format.
 
 ## Contributions
-The idea of developing **`tv`** originated when I was working on my B.Sc. project. There might be issues with it, but it can surely be imporved. Pull requests are welcome and you can reach my at my [email](mailto:std_reza_mansouri@khu.ac.ir) if you need to discuss something or become a collaborator.
+The idea of developing **`tv`** originated when I was working on my B.Sc. project. There might be issues with it, but it can surely be improved. Pull requests are welcome and you can reach my at my [email](mailto:std_reza_mansouri@khu.ac.ir) if you need to discuss something or become a collaborator.
