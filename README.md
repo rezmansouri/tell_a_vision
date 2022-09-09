@@ -293,7 +293,8 @@ import IPython
 for nar in narration:
   IPython.display.display(IPython.display.Audio(f'audio/{nar}.mp3'))
 ```
-https://user-images.githubusercontent.com/46050829/189135844-c3fc75ba-02f3-41e5-9feb-1fa15130d400.mp4
+
+https://user-images.githubusercontent.com/46050829/189315741-c3f56862-3f8c-4f20-8c86-50d98b970edf.mp4
 
 Lets take a look at the picture again:
 
