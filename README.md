@@ -138,7 +138,7 @@ The `locations` result for our example would be:
 #### Task two: Distance estimation with `tv.Ruler`
 `tv.Ruler` needs to be fit on a dataset, preferably big enough, to obtain quartiles of each object class's areas. By doing so it will be able to place a new object into these quartiles according to its pixel area, as a measure of its size/distance in the scene.
 
-Suppose we have a dataset of 1000 images with their corresponding bounding box annotations in a list call `images`. The list would look something like this:
+Suppose we have a dataset of 1000 images with their corresponding bounding box annotations in a list called `images`. The list would look something like this:
 ```python
 images = [
     [
