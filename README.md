@@ -311,7 +311,7 @@ Lets take a look at the picture again:
 - `v_point`<sup>1</sup>: portion of an objects height to be considered as a threshold when it is placed vertically near-midst to determine its vertical placement. Defaults to `0.66`.
 - `h_point`<sup>1</sup>: portion of an objects width to be considered as a threshold when it is placed horizontally near-middle to determine its horizontal placement. Defaults to `0.66`.
 - `horizontal_only`: Whether to locate the objects only horizontally. Defaults to `True`.
-- `returns` array of shape (n, 2) containing the locations of the boxes: `[h_location, v_location]`. `0`, `1`, and `2` mean left/above, middle/midst, right/bottom for `h_location` and `v_location` respectively. if `horizontal_only=True`, `v_location` will be `nan` for all entries.
+- `returns` array of shape (n, 2) containing the locations of the boxes: `[h_location, v_location]`. `0`, `1`, and `2` mean left/above, middle/midst, right/bottom for `h_location` and `v_location` respectively. if `horizontal_only=True`, `v_location` will be `-1` for all entries.
 
 1- `v_point` and `h_point` are described more in detail here:
 
