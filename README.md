@@ -7,7 +7,7 @@
 **tell a vision (`tv`)**  is an inference engine, in the form of a Python package that describes the scenes for object detection tasks in computer vision.
 
 ## Links
-- [tell-a-vision on PyPi](https://pypi.org/project/tell-a-vision/)
+- [tell-a-vision on PyPI](https://pypi.org/project/tell-a-vision/)
 - [Demo Colab Notebook](https://colab.research.google.com/drive/1o6MgntmIb1qLLpGXxsDw0W6SMH2kheCZ?usp=sharing)
 
 
