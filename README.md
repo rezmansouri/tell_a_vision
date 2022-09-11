@@ -4,7 +4,9 @@
   <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/tv.png" width="100%"/>
 </p>
 
-**tell a vision (`tv`)**  is a Python package that describes the scenes for object detection tasks in computer vision.
+**tell a vision (`tv`)**  is an inference engine, in the form of a Python package that describes the scenes for object detection tasks in computer vision.
+
+You can try [this](https://colab.research.google.com/drive/1o6MgntmIb1qLLpGXxsDw0W6SMH2kheCZ?usp=sharing) colab notebook as a demo.
 
 ## Introduction
 The task of object detection consists of three subtasks: object recognition, localization, and classification. Usually, object detection projects present their output in a visual format that shows the objects found with bounding boxes in different colors representing their classes. Something like this:
