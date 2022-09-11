@@ -38,7 +38,7 @@ Here is a mere representation of what **`tv`** does:
 
 You can try [this](https://colab.research.google.com/drive/1o6MgntmIb1qLLpGXxsDw0W6SMH2kheCZ?usp=sharing) colab notebook as a demo.
 
-## Documentation
+## Reference
 ### Requirements
 1. Python interpreter version 3.7 or later
 2. Package prerequisites:
@@ -305,7 +305,7 @@ Lets take a look at the picture again:
   <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/car-pov-3.png" width="100%"/>
 </p>
 
-### Reference
+### Documentation
 #### `tv.locate(boxes, scene_width, scene_height, v_point=.66, h_point=.66, horizontal_only=True)`
 #### Arguments
 - `boxes`: numpy array of shape (n, 4) where n is the number of the boxes found and each element contains bounding box of the found object in the following format: `[ymin, xmin, ymax, xmax]`.
