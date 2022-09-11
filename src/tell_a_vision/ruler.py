@@ -5,7 +5,7 @@ class Ruler:
     def __init__(self, images: list, class_labels: list, coords_key='box', class_key='class', xmin_key='x1', ymin_key='y1',
                  xmax_key='x2', ymax_key='y2'):
         """
-        fit the camera on a collection of bounding box annotations for each class to get quantiles of the area of objects
+        fit the ruler on a collection of bounding box annotations for each class to get quantiles of the area of objects
         :param images: list of dicts where each one corresponds to bounding box annotations of an image i.e. [{'box':{'x1': 0, 'y1': 10, 'x2': 10, 'y2':20}, 'class': 'car'}]
         :param class_labels: list of class labels
         :param coords_key: alternative key for 'box' in [{'box':{'x1': 0, 'y1': 10, 'x2': 10, 'y2':20}, 'class': 'car'}]

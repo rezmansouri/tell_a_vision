@@ -6,7 +6,11 @@
 
 **tell a vision (`tv`)**  is an inference engine, in the form of a Python package that describes the scenes for object detection tasks in computer vision.
 
-You can try [this](https://colab.research.google.com/drive/1o6MgntmIb1qLLpGXxsDw0W6SMH2kheCZ?usp=sharing) colab notebook as a demo.
+## Links
+- [tell-a-vision on PyPi](https://pypi.org/project/tell-a-vision/)
+- [Demo Colab Notebook](https://colab.research.google.com/drive/1o6MgntmIb1qLLpGXxsDw0W6SMH2kheCZ?usp=sharing)
+
+
 
 ## Introduction
 The task of object detection consists of three subtasks: object recognition, localization, and classification. Usually, object detection projects present their output in a visual format that shows the objects found with bounding boxes in different colors representing their classes. Something like this:
@@ -29,8 +33,10 @@ And in the end, using TTS (Text To Speech) it can describe the scene.
 Here is a mere representation of what **`tv`** does:
 
 <p align="center">
-  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/tv.gif" width="80%"/>
+  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/tv.gif" width="100%"/>
 </p>
+
+You can try [this](https://colab.research.google.com/drive/1o6MgntmIb1qLLpGXxsDw0W6SMH2kheCZ?usp=sharing) colab notebook as a demo.
 
 ## Documentation
 ### Requirements
@@ -82,7 +88,7 @@ Normally your object detection algorithm will output these results:
 For the rest of this documentation, let's consider the following output of an object detection algorithm, such as YOLO, as an example:
 
 <p align="center">
-  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/car-pov-1.png" width="100%"/>
+  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/car-pov-2.png" width="100%"/>
 </p>
 
 The corresponding `boxes` and `classes` for this visualization, provided by the object detection algorithm, are:
@@ -107,10 +113,6 @@ This scene (picture) is 1280px wide and 720px high. The objects are mentioned fr
 ```python
 CLASS_LABELS = ['pedestrian', 'car', 'truck', 'traffic light', 'traffic sign']
 ```
-
-<p align="center">
-  <img src="https://github.com/rezmansouri/tell_a_vision/blob/main/misc/car-pov-2.png" width="100%"/>
-</p>
 
 #### Task one: Localization with `tv.locate()`
 First, let's see if the objects we've found are placed left, middle, right (or optionally, above, midst, bottom) of the scene.

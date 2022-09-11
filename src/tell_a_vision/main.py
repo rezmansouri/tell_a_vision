@@ -9,7 +9,7 @@ def locate(boxes, scene_width, scene_height, v_point=.66, h_point=.66, horizonta
     :param v_point: the portion of a box's width, as a threshold to determine its vertical location
     :param h_point: the portion of a box's height, as a threshold to determine its horizontal location
     :param horizontal_only: defaults to True, if False, horizontal location of the boxes will be determined as well
-    :return: an array of [vertical, horizontal] location of each box, 0 for left (above), 1 for middle (midst), 2 for right (bottom), and None in horizontal index if horizontal_only=True
+    :return: an array of [horizontal, vertical] location of each box, 0 for left (above), 1 for middle (midst), 2 for right (bottom), and -1 in vertical index if horizontal_only=True
     """
     where = np.ones((boxes.shape[0], 2), dtype='int8')
 
