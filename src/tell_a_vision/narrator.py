@@ -58,8 +58,7 @@ class Narrator:
         """
         :param classes: array of shape (n, ) with each element corresponding to the index of the object's class in class_labels
         :param class_labels: list of class labels of objects in your dataset. For example: ['car', 'bike', 'person', 'truck'].
-ranks: output of tv.Ruler.get_rank(). Array of shape (n, ) with each element being 0, 1, 2, or 3 representing an object's size/distance
-        :param ranks: output of tv.locate(). Array of shape (n, 2) containing the locations of the boxes: [h_location, v_location]
+        :param ranks: output of tv.Ruler.get_rank(). Array of shape (n, ) with each element being 0, 1, 2, or 3 representing an object's size/distance
         :param locations: output of tv.locate(). Array of shape (n, 2) containing the locations of the boxes: [h_location, v_location]
         :param rank_to_distance_labels: tuple of length 4 describing objects' distance/size according to their ranks (quartile intervals)
         :param h_location_to_lr_labels: tuple of length 3 describing objects' horizontal location
