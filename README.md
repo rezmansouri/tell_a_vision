@@ -326,8 +326,8 @@ Using these arguments, you can specify the portion of an object's width/height t
 
 In other words:
 
-- if $\alpha$ > `h_point` * object's width, it is considered on the right.
-- if $\beta$ > `h_point` * object's width, it is considered on the left.
+- if $\alpha$ > `h_point` * object's width, it is considered on the left.
+- if $\beta$ > `h_point` * object's width, it is considered on the right.
 - otherwise, it is considered in the middle.
 
 Vertically,
