@@ -21,7 +21,7 @@ The task of object detection consists of three subtasks: object recognition, loc
 
 But what if we could make the computer tell us what it is seeing? For example: "There is a dog in the bottom left, a bicycle in the middle, and a truck on the top right." What if the computer can *tell a vision*? Pretty cool right?
 
-**tell a vision (`tv`)** is Python package that can provide explanatory analysis on the output of object detection algorithms. It takes bounding boxes, and the classes of the objects found and answers questions such as:
+**tell a vision (`tv`)** is a Python package that can provide explanatory analysis on the output of object detection algorithms. It takes bounding boxes, and the classes of the objects found and answers questions such as:
 
 - How many objects and of what kind are in a specific region of the scene?
 - How far are they? Are they close? 
