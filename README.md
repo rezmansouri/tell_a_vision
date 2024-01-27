@@ -431,4 +431,4 @@ A static method that receives the output of `tv.locate()`, and `tv.Ruler.get_ran
 - `returns` a list of narrations that correspond to the downloaded audio files for a `narrator` which can also be used in a textual format.
 
 ## Contributions
-The idea of developing **`tv`** originated when I was working on my B.Sc. project. There might be issues with it, but it can surely be improved. Pull requests are welcome and you can reach my at my [email](mailto:std_reza_mansouri@khu.ac.ir) if you need to discuss something or become a collaborator.
+The idea of developing **`tv`** originated when I was working on my B.Sc. project. There might be issues with it, but it can surely be improved. Pull requests are welcome and you can reach my at my [email](mailto:itsrezamansouri@gmail.com) if you need to discuss something or become a collaborator.
